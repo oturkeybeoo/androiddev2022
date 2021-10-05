@@ -15,8 +15,8 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        TextView mTextView = (TextView) findViewById(R.id.text_message);
-        mTextView.setText("Hello World!");
+//        TextView mTextView = (TextView) findViewById(R.id.text_message);
+//        mTextView.setText("Hello World!");
 
         ForecastFragment ff = new ForecastFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.container, ff).commit();
