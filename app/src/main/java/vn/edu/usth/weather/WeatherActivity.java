@@ -2,6 +2,7 @@ package vn.edu.usth.weather;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +16,8 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-//        TextView mTextView = (TextView) findViewById(R.id.text_message);
-//        mTextView.setText("Hello World!");
-
-        ForecastFragment ff = new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, ff).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.weatherFragment, new WeatherFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.forecastFragment, new ForecastFragment()).commit();
 
         Log.i(TAG, "Create");
     }
