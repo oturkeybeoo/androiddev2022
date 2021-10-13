@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This week weather" />
+        android:text="@string/this_week_weather" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Monday"/>
+            android:text="@string/monday"/>
 
         <ImageView
             android:layout_width="16pt"
@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Heavy Rain"
+                android:text="@string/heavy_rain"
                 android:id="@+id/mon_forecast_weather_des"/>
 
             <TextView
@@ -64,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Tuesday"/>
+            android:text="@string/tuesday"/>
 
         <ImageView
             android:layout_width="16pt"
@@ -83,7 +83,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Heavy Rain"
+                android:text="@string/light_rain"
                 android:id="@+id/tue_forecast_weather_des"/>
 
             <TextView

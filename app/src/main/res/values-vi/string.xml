@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Thời tiết USTH</string>
+    <string name="hanoi">Hà Nội</string>
+    <string name="paris">Pari</string>
+    <string name="london">Luân Đôn</string>
+    <string name="sunny">Nắng</string>
+    <string name="light_rain">Mưa ít</string>
+    <string name="heavy_rain">Mưa nhiều</string>
+    <string name="rainy">Mưa</string>
+    <string name="cloudy">Nhiều mây</string>
+    <string name="this_week_weather">Dự báo tuần này</string>
+    <string name="monday">Thứ Hai</string>
+    <string name="tuesday">Thứ Ba</string>
+    <string name="wednesday">Thứ Tư</string>
+    <string name="thursday">Thứ Năm</string>
+    <string name="friday">Thứ Sáu</string>
+    <string name="saturday">Thứ Bảy</string>
+    <string name="sunday">Chủ Nhật</string>
+</resources>

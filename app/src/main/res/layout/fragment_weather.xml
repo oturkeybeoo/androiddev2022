@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/today_weather_des"
-            android:text="Sunny"/>
+            android:text="@string/sunny"/>
 
     </LinearLayout>
 
@@ -39,6 +39,6 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/today_weather_location"
-        android:text="Ha Noi"/>
+        android:text="@string/hanoi"/>
 
 </LinearLayout>
