@@ -3,12 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherFragment">
+    tools:context=".WeatherFragment"
+    android:orientation="horizontal"
+    android:id="@+id/today_weather"
+    android:background="@color/weather_fragment_background">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="match_parent"
-        android:text="Weather fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/today_weather_temperature"
+            android:text="24"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/today_weather_des"
+            android:text="Sunny"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:id="@+id/today_weather_icon"
+        android:src="@drawable/sun"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:id="@+id/today_weather_location"
+        android:text="Ha Noi"/>
 
 </LinearLayout>

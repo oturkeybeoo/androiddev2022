@@ -6,6 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
@@ -16,9 +21,25 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.weatherFragment, new WeatherFragment()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.forecastFragment, new ForecastFragment()).commit();
+        TabLayout tablayout = findViewById(R.id.tab_layout);
+        ViewPager2 pager2 = findViewById(R.id.view_pager);
 
+        WeatherFragmentAdapter adapter = new WeatherFragmentAdapter(this);
+        pager2.setAdapter(adapter);
+
+        new TabLayoutMediator(tablayout, pager2, (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText("Ha Noi");
+                    break;
+                case 1:
+                    tab.setText("Paris");
+                    break;
+                case 2:
+                    tab.setText("London");
+                    break;
+            }
+        }).attach();
         Log.i(TAG, "Create");
     }
 
