@@ -1,10 +1,14 @@
 package vn.edu.usth.weather;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -19,6 +23,10 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_baseline_refresh_24);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
@@ -59,8 +67,32 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.refresh:
-                Toast refresh_toast = Toast.makeText(getApplicationContext(), "Page refreshed", Toast.LENGTH_SHORT);
-                refresh_toast.show();
+                Handler handler = new Handler(Looper.getMainLooper()) {
+                    @Override
+                    public void handleMessage(@NonNull Message msg) {
+                        String content = msg.getData().getString("server_response");
+                        Toast.makeText(getApplicationContext() ,content, Toast.LENGTH_SHORT).show();
+                    }
+                };
+
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(5000);
+                        }
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Bundle bundle = new Bundle();
+                        bundle.putString("server_response", "Refreshed");
+                        Message msg = new Message();
+                        msg.setData(bundle);
+                        handler.sendMessage(msg);
+                    }
+                });
+                t.start();
+
                 return true;
             case R.id.search:
                 return true;

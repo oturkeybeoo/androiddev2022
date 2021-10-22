@@ -16,4 +16,6 @@
     <string name="friday">Thứ Sáu</string>
     <string name="saturday">Thứ Bảy</string>
     <string name="sunday">Chủ Nhật</string>
+    <string name="server_response">Phản Hồi</string>
+    <string name="some_json">Một cái json</string>
 </resources>
