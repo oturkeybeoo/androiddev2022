@@ -2,15 +2,17 @@ package vn.edu.usth.weather;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import android.media.MediaPlayer;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
@@ -40,7 +42,31 @@ public class WeatherActivity extends AppCompatActivity {
                     break;
             }
         }).attach();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.dolphine);
+        mediaPlayer.start();
+
         Log.i(TAG, "Create");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                Toast refresh_toast = Toast.makeText(getApplicationContext(), "Page refreshed", Toast.LENGTH_SHORT);
+                refresh_toast.show();
+                return true;
+            case R.id.search:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

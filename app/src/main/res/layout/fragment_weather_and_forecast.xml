@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherAndForecastFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".WeatherAndForecastFragment">
 
     <FrameLayout
+        android:id="@+id/weather_and_forecast"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/weather_and_forecast" />
+        android:layout_height="wrap_content" />
 
     <fragment
         android:id="@+id/weather_fragment"
@@ -18,7 +18,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="3"/>
+        android:layout_weight="3" />
 
     <fragment
         android:id="@+id/forecast_fragment"
@@ -27,6 +27,6 @@
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="7"/>
+        android:layout_weight="7" />
 
 </LinearLayout>
