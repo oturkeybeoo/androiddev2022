@@ -1,5 +1,6 @@
 package vn.edu.usth.weather;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,6 +24,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
 //        setSupportActionBar(toolbar);
@@ -63,35 +66,62 @@ public class WeatherActivity extends AppCompatActivity {
         return true;
     }
 
+    private class task extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(WeatherActivity.this, "Refreshing...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(WeatherActivity.this, "Refreshed", Toast.LENGTH_SHORT).show();
+        }
+    };
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.refresh:
-                Handler handler = new Handler(Looper.getMainLooper()) {
-                    @Override
-                    public void handleMessage(@NonNull Message msg) {
-                        String content = msg.getData().getString("server_response");
-                        Toast.makeText(getApplicationContext() ,content, Toast.LENGTH_SHORT).show();
-                    }
-                };
 
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(5000);
-                        }
-                        catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        Bundle bundle = new Bundle();
-                        bundle.putString("server_response", "Refreshed");
-                        Message msg = new Message();
-                        msg.setData(bundle);
-                        handler.sendMessage(msg);
-                    }
-                });
-                t.start();
+                new task().execute();
+
+//                Handler handler = new Handler(Looper.getMainLooper()) {
+//                    @Override
+//                    public void handleMessage(@NonNull Message msg) {
+//                        String content = msg.getData().getString("server_response");
+//                        Toast.makeText(getApplicationContext() ,content, Toast.LENGTH_SHORT).show();
+//                    }
+//                };
+//
+//                Thread t = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(5000);
+//                        }
+//                        catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("server_response", "Refreshed");
+//                        Message msg = new Message();
+//                        msg.setData(bundle);
+//                        handler.sendMessage(msg);
+//                    }
+//                });
+//                t.start();
 
                 return true;
             case R.id.search:
@@ -100,6 +130,8 @@ public class WeatherActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     @Override
     protected void onStart() {
